@@ -6,29 +6,22 @@
 
 {% block body %}
 
-<div>
-    <h4>Todo App</h4>
-    <table>
-        <tr>
-            <th>Task</th>
-            <th>Added</th>
-            <th>Actions</th>
-        </tr>
+<div class="container">
+    <h4>Classic / Obligatory To-do app in Python</h4>
+    <form action="/" method="POST">
+        <input type="text" name="content" id="content" placeholder="Enter your to-do item"/>
+        <button type="submit" value="Add" class="uk-button">Add item</button>
+    </form>
+        <ul class="todo-list">
         {% for task in tasks %}
-        <tr>
-            <td>{{ task.content }}</td>
-            <td>{{ task.date_created.date() }}</td>
-            <td>
+            <li>{{ task.content }}</li>
+            <li>{{ task.date_created.date() }}</li>
+            <li>
                 <a href="/delete/{{task.id}}">Delete</a>
                 <a href="/update/{{task.id}}">Update</a>
-            </td>
-        </tr>
+            </li>
         {% endfor %}
-    </table>
-    <form action="/" method="POST">
-        <input type="text" name="content" id="content" />
-        <input type="submit" value="Add" />
-    </form>
+        </ul>
 </div>
 
 {% endblock %}
